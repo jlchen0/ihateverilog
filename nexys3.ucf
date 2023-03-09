@@ -135,9 +135,9 @@ NET "btnR"         LOC = "D9"  | IOSTANDARD = "LVCMOS33";   #Bank = 0, Pin name 
 ## 12 pin connectors
 
 ##JA
-#NET "JA<0>"          LOC = "T12" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L19P,                           Sch name = JA1
-#NET "JA<1>"          LOC = "V12" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L19N,                           Sch name = JA2  
-#NET "JA<2>"          LOC = "N10" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L20P,                           Sch name = JA3
+#NET "JSTK_AXIS[0]"          LOC = "T12" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L19P,                           Sch name = JA1
+#NET "JSTK_AXIS[1]"          LOC = "V12" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L19N,                           Sch name = JA2  
+#NET "JSTK_AXIS[2]"          LOC = "N10" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L20P,                           Sch name = JA3
 #NET "JA<3>"          LOC = "P11" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L20N,                           Sch name = JA4
 #NET "JA<4>"          LOC = "M10" | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L22P,                           Sch name = JA7
 #NET "JA<5>"          LOC = "N9"  | IOSTANDARD = "LVCMOS33";   #Bank = 2, Pin name = IO_L22N,                           Sch name = JA8
