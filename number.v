@@ -88,6 +88,37 @@ module clk_5s (
     end
 endmodule
 
+module scorer (
+    input wire clk, 
+    input wire [3:0] digit1, 
+    input wire [3:0] digit2, 
+    input wire [3:0] digit3, 
+    input wire [3:0] digit4,  
+    output reg [3:0] score
+); 
+    initial begin
+        score = 0; 
+    end
+
+    always @(posedge clk) begin
+        if (digit1 == digit2 && digit1 == digit3 && digit1 == digit4) 
+            score = 10;
+        else if (digit1 == digit2 && digit1 == digit3)
+            score = 5; 
+        else if (digit1 == digit2 && digit1 == digit4)
+            score = 5;
+        else if (digit1 == digit3 && digit1 == digit4)
+            score = 5; 
+        else if (digit2 == digit3 && digit3 == digit4)
+            score = 5; 
+        else if (digit1 == digit2 || digit1 == digit3 || digit1 == digit4 || digit2 == digit3 || digit3 == digit4 || digit2 == digit4)
+            score = 1; 
+        else
+            score = 0;
+    end
+
+endmodule
+
 
 module number (
     input wire clk, 
@@ -95,7 +126,8 @@ module number (
     output reg [6:0] o1, 
     output reg [6:0] o2, 
     output reg [6:0] o3, 
-    output reg [6:0] o4
+    output reg [6:0] o4,
+    output reg [3:0] score
 ); 
     
     reg show_final; 
@@ -154,6 +186,7 @@ module number (
     wire [6:0] i_seg3; 
     wire [6:0] i_seg4;
  
+    wire [3:0] s; 
     clk_delay cd (.clk(clk), .delay(clk2));
     clk_delay cd2 (.clk(clk2), .delay(clk3));
     clk_delay cd3 (.clk(clk3), .delay(clk4));
@@ -171,6 +204,8 @@ module number (
             .spin(spin),
             .digit(d4));   
 
+    scorer sc (.clk(clk), .digit1(d1), .digit2(d2), .digit3(d3), .digit4(d4), .score(s));
+    
     digit_to_seg digit1 (
         .digit(d1),
         .display_binary(seg1)
@@ -290,5 +325,11 @@ module number (
         fixed3 <= 0; 
         fixed4 <= 0; 
     end
+
+    always @(posedge s) begin
+        score <= s; 
+    end
 endmodule
+
+
 
