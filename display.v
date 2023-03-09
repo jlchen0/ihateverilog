@@ -4,6 +4,7 @@ module display (
     input wire spin, 
     output reg [6:0] seg, // segments 
     output reg [3:0] an // anodes 
+    // TODO: add state here and balance stuff 
 );
     reg [1:0] anode_counter;  
     
@@ -11,6 +12,7 @@ module display (
     wire [6:0] seg2; 
     wire [6:0] seg3; 
     wire [6:0] seg4; 
+    wire [3:0] score; 
 
     initial begin
         anode_counter = 2'b00; 
@@ -26,10 +28,12 @@ module display (
               .o1(seg1), 
               .o2(seg2),
               .o3(seg3),
-              .o4(seg4)
+              .o4(seg4), 
+              .score(score)
     );
 
     always @(posedge clk) begin
+        // TODO: add state check here; if not in the correct state, then show balance instead 
         if (anode_counter == 2'b00) begin 
             // Display m1 
             seg <= seg1; 
