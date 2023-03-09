@@ -326,7 +326,7 @@ module number (
         fixed4 <= 0; 
     end
 
-    always @(posedge s) begin
+    always @(s) begin
         score <= s; 
     end
 endmodule
